@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pooja & Ritvik — Royal Wedding Invitation</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Royal Serif, Romantic Script & Devanagari -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Noto+Serif+Devanagari:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ivory: '#FAF6EE',
+                        parchment: '#F4ECE1',
+                        gold: {
+                            light: '#E8CE8C',
+                            DEFAULT: '#C59B27',
+                            dark: '#8C6239',
+                            deep: '#6E4A26'
+                        },
+                        emerald: {
+                            royal: '#1B4D3E',
+                            deep: '#113329',
+                            leaf: '#2E6F40'
+                        },
+                        crimson: {
+                            royal: '#7B1818',
+                            deep: '#560D0D',
+                            soft: '#B8333A'
+                        },
+                        marigold: '#E89B25'
+                    },
+                    fontFamily: {
+                        cinzel: ['"Cinzel Decorative"', 'serif'],
+                        cormorant: ['"Cormorant Garamond"', 'serif'],
+                        script: ['"Great Vibes"', 'cursive'],
+                        devanagari: ['"Noto Serif Devanagari"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'royal': '0 20px 50px -12px rgba(140, 98, 57, 0.25)',
+                        'gold-glow': '0 0 32px rgba(197, 155, 39, 0.55)',
+                        'card': '0 10px 30px -5px rgba(27, 77, 62, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Textured Parchment Paper Pattern */
+        body {
+            background-color: #FAF6EE;
+            background-image: 
+                radial-gradient(rgba(197, 155, 39, 0.14) 1px, transparent 0),
+                radial-gradient(rgba(123, 24, 24, 0.06) 1px, transparent 0),
+                linear-gradient(to bottom, rgba(250, 246, 238, 0.94), rgba(244, 236, 225, 0.97));
+            background-size: 36px 36px, 24px 24px, 100% 100%;
+            background-position: 0 0, 12px 12px, 0 0;
+            color: #2C221E;
+            overflow-x: hidden;
+        }
+
+        /* ==================== ANIMATED FRONT COVER & HINDU MONOGRAM STYLES ==================== */
+        #royal-cover-overlay {
+            background: radial-gradient(circle at 50% 42%, #FAF6EE 0%, #F4E8D4 58%, #E6D2B5 100%);
+            transition: opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1), visibility 1.1s;
+        }
+
+        .cover-curtain-left,
+        .cover-curtain-right {
+            transition: transform 1.25s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        #royal-cover-overlay.is-opening .cover-curtain-left {
+            transform: translateX(-102%);
+        }
+
+        #royal-cover-overlay.is-opening .cover-curtain-right {
+            transform: translateX(102%);
+        }
+
+        #royal-cover-overlay.is-opening .cover-center-stage {
+            transform: scale(1.08);
+            opacity: 0;
+            transition: transform 0.95s ease-out, opacity 0.85s ease-out;
+        }
+
+        /* SVG Calligraphic Stroke Draw Animation for P&R */
+        .monogram-stroke {
+            stroke-dasharray: 420;
+            stroke-dashoffset: 420;
+            animation: drawMonogram 2.6s cubic-bezier(0.37, 0, 0.63, 1) forwards 0.4s;
+        }
+
+        .monogram-stroke-delay {
+            stroke-dasharray: 420;
+            stroke-dashoffset: 420;
+            animation: drawMonogram 2.6s cubic-bezier(0.37, 0, 0.63, 1) forwards 0.85s;
+        }
+
+        .monogram-fill-fade {
+            opacity: 0;
+            animation: fadeInFill 1.4s ease-out forwards 1.9s;
+        }
+
+        @keyframes drawMonogram {
+            to { stroke-dashoffset: 0; }
+        }
+
+        @keyframes fadeInFill {
+            to { opacity: 1; }
+        }
+
+        /* Counter-Rotating Sacred Geometry Mandala Rings */
+        @keyframes spinClockwise {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes spinCounterClockwise {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+
+        .ring-cw {
+            transform-origin: 200px 200px;
+            animation: spinClockwise 55s linear infinite;
+        }
+        .ring-ccw {
+            transform-origin: 200px 200px;
+            animation: spinCounterClockwise 42s linear infinite;
+        }
+
+        /* Flickering Sacred Diya Flame */
+        @keyframes diyaFlicker {
+            0%, 100% { transform: scaleY(1) scaleX(1) rotate(-1deg); opacity: 0.95; }
+            35% { transform: scaleY(1.12) scaleX(0.92) rotate(2deg); opacity: 1; }
+            70% { transform: scaleY(0.93) scaleX(1.05) rotate(-2deg); opacity: 0.88; }
+        }
+        .diya-flame {
+            transform-origin: center bottom;
+            animation: diyaFlicker 1.8s ease-in-out infinite;
+        }
+        .diya-flame-alt {
+            transform-origin: center bottom;
+            animation: diyaFlicker 2.1s ease-in-out infinite 0.5s;
+        }
+
+        /* Divine Aura Pulse */
+        @keyframes auraPulse {
+            0%, 100% { transform: scale(0.96); opacity: 0.45; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+        .divine-aura {
+            animation: auraPulse 4s ease-in-out infinite;
+        }
+
+        /* Gold Shimmer Sweep on Button & Crest */
+        @keyframes shimmerSweep {
+            0% { transform: translateX(-140%) skewX(-20deg); }
+            100% { transform: translateX(240%) skewX(-20deg); }
+        }
+        .shimmer-bar {
+            animation: shimmerSweep 3.4s infinite ease-in-out;
+        }
+
+        /* Ornate Mughal Arch Frame */
+        .mughal-arch {
+            border-radius: 50% 50% 16px 16px / 32% 32% 16px 16px;
+            position: relative;
+        }
+
+        /* Double Gold Filigree Border */
+        .filigree-card {
+            background: rgba(255, 253, 249, 0.92);
+            border: 1.5px solid #C59B27;
+            box-shadow: inset 0 0 0 4px #FAF6EE, inset 0 0 0 5.5px rgba(197, 155, 39, 0.55), 0 18px 40px -10px rgba(140, 98, 57, 0.18);
+        }
+
+        /* Wax Seal Embossed Effect */
+        .wax-seal {
+            background: radial-gradient(circle at 30% 30%, #A32222, #7B1818 60%, #4E0B0B 100%);
+            box-shadow: 
+                0 8px 20px rgba(86, 13, 13, 0.4),
+                inset 0 2px 6px rgba(255, 220, 220, 0.35),
+                inset 0 -4px 8px rgba(50, 5, 12, 0.65);
+        }
+
+        /* Subtle Slow Sway for Hanging Temple Bells */
+        @keyframes bellSway {
+            0%, 100% { transform: rotate(-3.5deg); }
+            50% { transform: rotate(3.5deg); }
+        }
+        .animate-bell {
+            transform-origin: top center;
+            animation: bellSway 4.2s ease-in-out infinite;
+        }
+        .animate-bell-delay {
+            transform-origin: top center;
+            animation: bellSway 5s ease-in-out infinite 1.1s;
+        }
+
+        /* Gentle Floating Mandala Rotation */
+        @keyframes slowSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-mandala {
+            animation: slowSpin 75s linear infinite;
+        }
+
+        /* Falling Marigold Petal Animation */
+        .petal {
+            position: fixed;
+            top: -40px;
+            pointer-events: none;
+            z-index: 60;
+            opacity: 0.78;
+            animation: fallPetal linear infinite;
+        }
+
+        @keyframes fallPetal {
+            0% {
+                transform: translateY(-40px) rotate(0deg) translateX(0px);
+                opacity: 0;
+            }
+            15% { opacity: 0.85; }
+            85% { opacity: 0.75; }
+            100% {
+                transform: translateY(105vh) rotate(540deg) translateX(45px);
+                opacity: 0;
+            }
+        }
+
+        /* Reveal on Scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Animated Music Equalizer Bars */
+        @keyframes eqBounce {
+            0%, 100% { height: 4px; }
+            50% { height: 15px; }
+        }
+        .eq-bar {
+            width: 3px;
+            height: 5px;
+            border-radius: 9999px;
+            background-color: #E8CE8C;
+            transition: height 0.2s ease;
+        }
+        .eq-playing .eq-bar:nth-child(1) { animation: eqBounce 0.7s ease-in-out infinite; }
+        .eq-playing .eq-bar:nth-child(2) { animation: eqBounce 0.55s ease-in-out infinite 0.15s; }
+        .eq-playing .eq-bar:nth-child(3) { animation: eqBounce 0.8s ease-in-out infinite 0.3s; }
+        .eq-playing .eq-bar:nth-child(4) { animation: eqBounce 0.6s ease-in-out infinite 0.1s; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F4ECE1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C59B27;
+            border-radius: 9999px;
+        }
+    </style>
+</head>
+<body class="font-cormorant antialiased selection:bg-crimson-royal selection:text-ivory">
+
+    <!-- Falling Marigold Petals Container -->
+    <div id="petals-container" aria-hidden="true"></div>
+
+    <!-- ==================== ANIMATED FRONT PAGE ("P&R" HINDU ROYAL COVER) ==================== -->
+    <section id="royal-cover-overlay" aria-label="Animated Hindu Royal Wedding Cover"
+        class="fixed inset-0 z-50 flex items-center justify-center overflow-hidden select-none">
+
+        <!-- Left & Right Royal Silk Gate Panels for Opening Reveal -->
+        <div class="cover-curtain-left absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-[#F3E5CE] via-[#FAF6EE] to-[#F7ECDA] border-r border-gold/40 pointer-events-none"></div>
+        <div class="cover-curtain-right absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-[#F3E5CE] via-[#FAF6EE] to-[#F7ECDA] border-l border-gold/40 pointer-events-none"></div>
+
+        <!-- Ornate Top Jasmine (Mogra) & Marigold Toran Garland with Hanging Brass Temple Bells -->
+        <div class="absolute top-0 inset-x-0 z-20 pointer-events-none">
+            <div class="h-2.5 bg-gradient-to-r from-crimson-royal via-gold to-crimson-royal"></div>
+            <svg class="w-full h-20 sm:h-28 drop-shadow-md" viewBox="0 0 1200 130" preserveAspectRatio="none" fill="none">
+                <!-- Mango Leaf & Marigold Scalloped Toran -->
+                <path d="M0 0 Q150 75 300 0 Q450 75 600 0 Q750 75 900 0 Q1050 75 1200 0" stroke="#1B4D3E" stroke-width="5" fill="none"/>
+                <path d="M0 4 Q150 82 300 4 Q450 82 600 4 Q750 82 900 4 Q1050 82 1200 4" stroke="#C59B27" stroke-width="2.5" stroke-dasharray="6 4" fill="none"/>
+                <!-- Hanging Jasmine & Lotus Tassels -->
+                <g fill="#FAF6EE" stroke="#C59B27" stroke-width="1">
+                    <circle cx="150" cy="48" r="5"/><circle cx="150" cy="60" r="5"/><circle cx="150" cy="72" r="5"/>
+                    <path d="M143 82 Q150 96 157 82 Z" fill="#B8333A"/>
+                    <circle cx="450" cy="48" r="5"/><circle cx="450" cy="60" r="5"/><circle cx="450" cy="72" r="5"/>
+                    <path d="M443 82 Q450 96 457 82 Z" fill="#B8333A"/>
+                    <circle cx="750" cy="48" r="5"/><circle cx="750" cy="60" r="5"/><circle cx="750" cy="72" r="5"/>
+                    <path d="M743 82 Q750 96 757 82 Z" fill="#B8333A"/>
+                    <circle cx="1050" cy="48" r="5"/><circle cx="1050" cy="60" r="5"/><circle cx="1050" cy="72" r="5"/>
+                    <path d="M1043 82 Q1050 96 1057 82 Z" fill="#B8333A"/>
+                </g>
+            </svg>
+
+            <!-- Left & Right Swaying Temple Bells -->
+            <div class="max-w-5xl mx-auto flex justify-between px-5 sm:px-14 -mt-12 sm:-mt-16">
+                <div class="animate-bell flex flex-col items-center">
+                    <div class="w-0.5 h-10 sm:h-14 bg-gold-dark"></div>
+                    <svg class="w-8 h-10 sm:w-11 sm:h-13 drop-shadow" viewBox="0 0 64 80" fill="none">
+                        <path d="M32 6C24 6 18 14 18 26C18 42 10 52 6 58H58C54 52 46 42 46 26C46 14 40 6 32 6Z" fill="#C59B27" stroke="#6E4A26" stroke-width="2"/>
+                        <circle cx="32" cy="63" r="5" fill="#7B1818"/>
+                    </svg>
+                </div>
+                <div class="animate-bell-delay flex flex-col items-center">
+                    <div class="w-0.5 h-10 sm:h-14 bg-gold-dark"></div>
+                    <svg class="w-8 h-10 sm:w-11 sm:h-13 drop-shadow" viewBox="0 0 64 80" fill="none">
+                        <path d="M32 6C24 6 18 14 18 26C18 42 10 52 6 58H58C54 52 46 42 46 26C46 14 40 6 32 6Z" fill="#C59B27" stroke="#6E4A26" stroke-width="2"/>
+                        <circle cx="32" cy="63" r="5" fill="#7B1818"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Center Stage: Hindu Sacred Geometry & Animated "P&R" Logo Crest -->
+        <div class="cover-center-stage relative z-20 max-w-xl w-full px-4 pt-12 pb-6 text-center flex flex-col items-center">
+
+            <!-- Top Sacred Invocation -->
+            <div class="mb-2">
+                <p class="font-devanagari text-crimson-royal font-bold text-lg sm:text-2xl tracking-wide drop-shadow-sm">
+                    ॥ श्री गणेशाय नमः ॥
+                </p>
+                <p class="font-cinzel text-[11px] sm:text-xs tracking-[0.34em] uppercase text-gold-deep font-bold mt-0.5">
+                    Shree Ganeshaya Namah
+                </p>
+            </div>
+
+            <!-- INTRICATE ANIMATED HINDU "P&R" MONOGRAM CREST SVG -->
+            <div class="relative w-72 h-72 sm:w-88 sm:h-88 md:w-96 md:h-96 my-1 flex items-center justify-center">
+                <!-- Divine Soft Golden Aura Behind Emblem -->
+                <div class="divine-aura absolute inset-6 rounded-full bg-gradient-to-tr from-gold/30 via-marigold/20 to-crimson-royal/20 blur-2xl pointer-events-none"></div>
+
+                <svg class="w-full h-full drop-shadow-xl" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="templeGold" x1="40" y1="40" x2="360" y2="360" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#8C6239"/>
+                            <stop offset="30%" stop-color="#E8CE8C"/>
+                            <stop offset="55%" stop-color="#C59B27"/>
+                            <stop offset="80%" stop-color="#F6E2A6"/>
+                            <stop offset="100%" stop-color="#7A5229"/>
+                        </linearGradient>
+                        <linearGradient id="sindoorCrimson" x1="120" y1="100" x2="280" y2="300" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#A32222"/>
+                            <stop offset="50%" stop-color="#7B1818"/>
+                            <stop offset="100%" stop-color="#4E0B0B"/>
+                        </linearGradient>
+                        <radialGradient id="ivoryCore" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#FFFDF9"/>
+                            <stop offset="80%" stop-color="#FAF2E3"/>
+                            <stop offset="100%" stop-color="#EAD8B8"/>
+                        </radialGradient>
+                    </defs>
+
+                    <!-- Layer 1: Outer Rotating 16-Petal Sacred Lotus & Sri Yantra Filigree Ring -->
+                    <g class="ring-cw">
+                        <circle cx="200" cy="200" r="182" stroke="url(#templeGold)" stroke-width="1.5" stroke-dasharray="4 4"/>
+                        <circle cx="200" cy="200" r="172" stroke="url(#templeGold)" stroke-width="2"/>
+                        <!-- 16 Lotus Petals Around Perimeter -->
+                        <g stroke="url(#templeGold)" stroke-width="1.5" fill="rgba(197, 155, 39, 0.12)">
+                            <path d="M200 10 C210 26 210 34 200 44 C190 34 190 26 200 10 Z"/>
+                            <path d="M200 390 C210 374 210 366 200 356 C190 366 190 374 200 390 Z"/>
+                            <path d="M10 200 C26 190 34 190 44 200 C34 210 26 210 10 200 Z"/>
+                            <path d="M390 200 C374 190 374 190 356 200 C374 210 374 210 390 200 Z"/>
+                            <path d="M66 66 C84 70 90 76 90 90 C76 90 70 84 66 66 Z"/>
+                            <path d="M334 334 C316 330 310 324 310 310 C324 310 330 316 334 334 Z"/>
+                            <path d="M334 66 C330 84 324 90 310 90 C310 76 316 70 334 66 Z"/>
+                            <path d="M66 334 C70 316 76 310 90 310 C90 324 84 330 66 334 Z"/>
+                            <path d="M127 24 C140 36 142 44 136 56 C124 48 122 40 127 24 Z"/>
+                            <path d="M273 376 C260 364 258 356 264 344 C276 352 278 360 273 376 Z"/>
+                            <path d="M376 127 C364 140 356 142 344 136 C352 124 360 122 376 127 Z"/>
+                            <path d="M24 273 C36 260 44 258 56 264 C48 276 40 278 24 273 Z"/>
+                            <path d="M273 24 C278 40 276 48 264 56 C258 44 260 36 273 24 Z"/>
+                            <path d="M127 376 C122 360 124 352 136 344 C142 356 140 364 127 376 Z"/>
+                            <path d="M376 273 C360 278 352 276 344 264 C356 258 364 260 376 273 Z"/>
+                            <path d="M24 127 C40 122 48 124 56 136 C44 142 36 140 24 127 Z"/>
+                        </g>
+                    </g>
+
+                    <!-- Layer 2: Counter-Rotating Sacred Geometry Star (Ashtalakshmi Octagram) -->
+                    <g class="ring-ccw">
+                        <rect x="92" y="92" width="216" height="216" rx="14" stroke="url(#templeGold)" stroke-width="1.5" fill="none"/>
+                        <rect x="92" y="92" width="216" height="216" rx="14" transform="rotate(45 200 200)" stroke="url(#templeGold)" stroke-width="1.5" fill="none"/>
+                        <circle cx="200" cy="200" r="142" stroke="url(#templeGold)" stroke-width="1" stroke-dasharray="2 5"/>
+                    </g>
+
+                    <!-- Layer 3: Central Ivory Medallion Disc -->
+                    <circle cx="200" cy="200" r="126" fill="url(#ivoryCore)" stroke="url(#templeGold)" stroke-width="3.5"/>
+                    <circle cx="200" cy="200" r="118" stroke="#7B1818" stroke-width="1" stroke-opacity="0.35"/>
+
+                    <!-- Layer 4: Crowning Sacred Kalash, Mango Leaves & Coconut at Top of Medallion -->
+                    <g transform="translate(200, 62)">
+                        <!-- Mango Leaves -->
+                        <path d="M-16 14 C-28 6 -30 -4 -22 -8 C-15 -3 -12 5 -10 14" fill="#1B4D3E"/>
+                        <path d="M16 14 C28 6 30 -4 22 -8 C15 -3 12 5 10 14" fill="#1B4D3E"/>
+                        <path d="M0 12 C-6 -2 -4 -12 0 -15 C4 -12 6 -2 0 12" fill="#2E6F40"/>
+                        <!-- Sacred Coconut -->
+                        <ellipse cx="0" cy="9" rx="9" ry="11" fill="#7A4928" stroke="#4E2C14" stroke-width="1.2"/>
+                        <!-- Brass Kalash Pot -->
+                        <path d="M-13 14 H13 L10 20 C17 24 18 35 10 41 H-10 C-18 35 -17 24 -10 20 Z" fill="url(#templeGold)" stroke="#6E4A26" stroke-width="1.3"/>
+                        <!-- Auspicious Tilak / Swastik Bindu -->
+                        <circle cx="0" cy="30" r="2.5" fill="#7B1818"/>
+                    </g>
+
+                    <!-- Layer 5: Twin Sacred Temple Diyas with Flickering Flames Flanking Medallion -->
+                    <!-- Left Diya -->
+                    <g transform="translate(64, 212)">
+                        <path d="M-14 0 Q0 12 14 0 Q8 14 0 14 Q-8 14 -14 0 Z" fill="url(#templeGold)" stroke="#6E4A26" stroke-width="1"/>
+                        <path class="diya-flame" d="M0 -2 C-5 -10 -2 -20 0 -24 C2 -20 5 -10 0 -2 Z" fill="#E89B25"/>
+                        <path class="diya-flame" d="M0 -4 C-2.5 -9 -1 -15 0 -18 C1 -15 2.5 -9 0 -4 Z" fill="#FFF3B0"/>
+                    </g>
+                    <!-- Right Diya -->
+                    <g transform="translate(336, 212)">
+                        <path d="M-14 0 Q0 12 14 0 Q8 14 0 14 Q-8 14 -14 0 Z" fill="url(#templeGold)" stroke="#6E4A26" stroke-width="1"/>
+                        <path class="diya-flame-alt" d="M0 -2 C-5 -10 -2 -20 0 -24 C2 -20 5 -10 0 -2 Z" fill="#E89B25"/>
+                        <path class="diya-flame-alt" d="M0 -4 C-2.5 -9 -1 -15 0 -18 C1 -15 2.5 -9 0 -4 Z" fill="#FFF3B0"/>
+                    </g>
+
+                    <!-- Layer 6: CALLIGRAPHIC ANIMATED "P & R" MONOGRAM INITIALS -->
+                    <!-- Letter P (Bride: Pooja) -->
+                    <text x="148" y="222" text-anchor="middle" font-family="'Cinzel Decorative', serif" font-weight="700" font-size="84"
+                        stroke="url(#sindoorCrimson)" stroke-width="2.2" fill="none" class="monogram-stroke">P</text>
+                    <text x="148" y="222" text-anchor="middle" font-family="'Cinzel Decorative', serif" font-weight="700" font-size="84"
+                        fill="url(#sindoorCrimson)" class="monogram-fill-fade">P</text>
+
+                    <!-- Central Ornate Ampersand (&) in Temple Gold -->
+                    <text x="200" y="216" text-anchor="middle" font-family="'Great Vibes', cursive" font-size="52"
+                        stroke="url(#templeGold)" stroke-width="1.5" fill="none" class="monogram-stroke-delay">&amp;</text>
+                    <text x="200" y="216" text-anchor="middle" font-family="'Great Vibes', cursive" font-size="52"
+                        fill="url(#templeGold)" class="monogram-fill-fade">&amp;</text>
+
+                    <!-- Letter R (Groom: Ritvik) -->
+                    <text x="254" y="222" text-anchor="middle" font-family="'Cinzel Decorative', serif" font-weight="700" font-size="84"
+                        stroke="url(#sindoorCrimson)" stroke-width="2.2" fill="none" class="monogram-stroke-delay">R</text>
+                    <text x="254" y="222" text-anchor="middle" font-family="'Cinzel Decorative', serif" font-weight="700" font-size="84"
+                        fill="url(#sindoorCrimson)" class="monogram-fill-fade">R</text>
+
+                    <!-- Layer 7: Sacred Lotus Pedestal & Auspicious Swastika Seal at Bottom of Medallion -->
+                    <g transform="translate(200, 294)">
+                        <!-- Blooming Pink/Crimson Lotus Base -->
+                        <path d="M0 -14 C6 -4 10 2 0 10 C-10 2 -6 -4 0 -14 Z" fill="#B8333A"/>
+                        <path d="M-14 -8 C-4 -5 0 2 -4 10 C-14 6 -18 -1 -14 -8 Z" fill="#D45D64"/>
+                        <path d="M14 -8 C4 -5 0 2 4 10 C14 6 18 -1 14 -8 Z" fill="#D45D64"/>
+                        <path d="M-24 0 C-12 0 -6 5 -8 11 C-19 10 -26 5 -24 0 Z" fill="#C59B27"/>
+                        <path d="M24 0 C12 0 6 5 8 11 C19 10 26 5 24 0 Z" fill="#C59B27"/>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- Couple Names & Wedding Date Title -->
+            <div class="mt-1">
+                <p class="font-cinzel text-xs tracking-[0.32em] uppercase text-emerald-royal font-bold">
+                    Wedding Invitation
+                </p>
+                <h2 class="font-cinzel text-3xl sm:text-5xl font-bold text-crimson-royal tracking-wide mt-1">
+                    Pooja <span class="font-script text-4xl sm:text-5xl text-gold-dark font-normal">&amp;</span> Ritvik
+                </h2>
+                <p class="text-base sm:text-lg italic text-gold-deep font-semibold mt-0.5">
+                    12 December 2026 • Faridabad &amp; Dehradun
+                </p>
+            </div>
+
+            <!-- Tactile Wax-Sealed "Open Invitation" Gate Button -->
+            <div class="mt-5 flex flex-col items-center gap-2.5">
+                <button id="open-invitation-btn" onclick="openRoyalInvitation()"
+                    class="group relative overflow-hidden inline-flex items-center gap-3 bg-gradient-to-r from-crimson-royal via-[#941F1F] to-crimson-deep text-ivory font-cinzel font-bold text-xs sm:text-sm tracking-[0.22em] uppercase px-8 py-4 rounded-full border-2 border-gold-light shadow-gold-glow hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer">
+                    <!-- Shimmer Light Sweep -->
+                    <span class="shimmer-bar absolute inset-y-0 w-16 bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none"></span>
+                    <span class="w-6 h-6 rounded-full bg-gold/25 border border-gold-light flex items-center justify-center text-[10px] text-gold-light font-bold">
+                        P&amp;R
+                    </span>
+                    <span>Open Invitation</span>
+                    <span class="text-gold-light group-hover:translate-x-1 transition-transform">→</span>
+                </button>
+
+                <span class="text-xs text-stone-600 italic">
+                    Tap to enter the royal celebration or scroll down
+                </span>
+            </div>
+        </div>
+
+        <!-- Bottom Royal Silk Border -->
+        <div class="absolute bottom-0 inset-x-0 h-2.5 bg-gradient-to-r from-emerald-royal via-gold to-crimson-royal z-20"></div>
+    </section>
+
+    <!-- Hidden YouTube Background Player Container ("Aaj Se Teri" - rBiblCpTw7s) -->
+    <div class="fixed -left-[9999px] -top-[9999px] w-1 h-1 opacity-0 pointer-events-none overflow-hidden" aria-hidden="true">
+        <div id="yt-music-player"></div>
+    </div>
+
+    <!-- Floating Wedding Music Pill ("Aaj Se Teri"), Replay Crest & Quick RSVP -->
+    <div class="fixed bottom-5 right-5 z-40 flex flex-col gap-2.5 items-end">
+        <button onclick="replayFrontCover()" title="View Animated P&R Cover"
+            class="flex items-center gap-2 bg-ivory/95 hover:bg-parchment text-crimson-royal border border-gold px-4 py-2 rounded-full shadow-royal backdrop-blur-md transition-all duration-300 text-xs sm:text-sm font-cinzel font-bold tracking-wider cursor-pointer">
+            <span>🪷</span>
+            <span class="hidden sm:inline">P&amp;R Crest</span>
+        </button>
+
+        <!-- Royal Brass & Ivory Music Pill -->
+        <div id="music-pill"
+            class="flex items-center gap-1.5 bg-emerald-royal/95 text-gold-light border border-gold pl-3.5 pr-2 py-2 rounded-full shadow-royal backdrop-blur-md transition-all duration-300">
+            <button id="audio-toggle" onclick="toggleAmbientMusic()" title="Play / Pause Wedding Song: Aaj Se Teri"
+                class="flex items-center gap-2.5 text-xs sm:text-sm font-semibold tracking-wider cursor-pointer hover:text-ivory transition-colors">
+                <!-- Animated Equalizer -->
+                <span id="eq-visualizer" class="flex items-end gap-0.5 h-4 w-4 justify-center" aria-hidden="true">
+                    <span class="eq-bar"></span>
+                    <span class="eq-bar"></span>
+                    <span class="eq-bar"></span>
+                    <span class="eq-bar"></span>
+                </span>
+                <span id="audio-label" class="whitespace-nowrap">♪ Aaj Se Teri</span>
+                <span id="audio-state-badge" class="text-[10px] uppercase tracking-widest px-2 py-0.5 rounded-full bg-gold/20 border border-gold/50 text-gold-light">
+                    Play
+                </span>
+            </button>
+            <a href="https://www.youtube.com/watch?v=rBiblCpTw7s" target="_blank" rel="noopener noreferrer"
+                title="Open Aaj Se Teri on YouTube"
+                class="w-7 h-7 rounded-full bg-emerald-deep/80 hover:bg-crimson-royal text-gold-light hover:text-ivory border border-gold/40 flex items-center justify-center transition-colors ml-1"
+                aria-label="Open Aaj Se Teri on YouTube">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+            </a>
+        </div>
+
+        <a href="#rsvp-section"
+            class="flex items-center gap-2 bg-crimson-royal hover:bg-crimson-deep text-ivory border border-gold-light px-4 py-2.5 rounded-full shadow-royal transition-all duration-300 text-sm font-semibold tracking-wider">
+            <span>💌</span>
+            <span>RSVP Now</span>
+        </a>
+    </div>
+
+    <!-- Ornate Top Border Ribbon -->
+    <div class="w-full h-2.5 bg-gradient-to-r from-emerald-royal via-gold to-crimson-royal"></div>
+
+    <!-- ==================== 1. SACRED BLESSING HEADER ==================== -->
+    <header class="relative pt-8 pb-4 px-4 text-center overflow-hidden">
+        <!-- Decorative Banana Leaf Corner Accents (SVG) -->
+        <svg class="hidden md:block absolute top-0 left-0 w-44 h-44 text-emerald-royal/20 pointer-events-none" viewBox="0 0 200 200" fill="currentColor">
+            <path d="M0,0 C80,10 140,60 180,150 C120,130 60,90 0,180 Z" />
+            <path d="M0,0 C110,5 170,40 200,110 C140,95 85,60 0,120 Z" opacity="0.6"/>
+        </svg>
+        <svg class="hidden md:block absolute top-0 right-0 w-44 h-44 text-emerald-royal/20 pointer-events-none transform scale-x-[-1]" viewBox="0 0 200 200" fill="currentColor">
+            <path d="M0,0 C80,10 140,60 180,150 C120,130 60,90 0,180 Z" />
+            <path d="M0,0 C110,5 170,40 200,110 C140,95 85,60 0,120 Z" opacity="0.6"/>
+        </svg>
+
+        <!-- Hanging Temple Brass Bells -->
+        <div class="max-w-5xl mx-auto flex justify-between items-start px-2 sm:px-10 -mt-8 mb-2 pointer-events-none">
+            <!-- Left Bell -->
+            <div class="animate-bell flex flex-col items-center">
+                <div class="w-0.5 h-12 sm:h-16 bg-gradient-to-b from-gold-dark to-gold"></div>
+                <svg class="w-8 h-10 sm:w-10 sm:h-12 text-gold-dark drop-shadow" viewBox="0 0 64 80" fill="none">
+                    <path d="M32 6C24 6 18 14 18 26C18 42 10 52 6 58H58C54 52 46 42 46 26C46 14 40 6 32 6Z" fill="url(#brassGrad)" stroke="#6E4A26" stroke-width="2"/>
+                    <circle cx="32" cy="63" r="5" fill="#8C6239"/>
+                    <path d="M22 68C25 74 39 74 42 68" stroke="#9B1B30" stroke-width="2.5" stroke-linecap="round"/>
+                    <defs>
+                        <linearGradient id="brassGrad" x1="6" y1="6" x2="58" y2="58" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#E5C98B"/>
+                            <stop offset="0.5" stop-color="#C5A059"/>
+                            <stop offset="1" stop-color="#8C6239"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+
+            <!-- Center Sacred Ganesha Lotus Emblem -->
+            <div class="pt-6 flex flex-col items-center">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-ivory border border-gold/60 flex items-center justify-center shadow-sm mb-2">
+                    <!-- Sacred Kalash & Lotus SVG -->
+                    <svg class="w-11 h-11 sm:w-13 sm:h-13 text-crimson-royal" viewBox="0 0 100 100" fill="none">
+                        <!-- Lotus Petals -->
+                        <path d="M50 15C55 28 65 35 50 48C35 35 45 28 50 15Z" fill="#9B1B30"/>
+                        <path d="M32 25C42 30 48 38 44 48C32 45 28 36 32 25Z" fill="#C5A059"/>
+                        <path d="M68 25C58 30 52 38 56 48C68 45 72 36 68 25Z" fill="#C5A059"/>
+                        <!-- Sacred Kalash Pot -->
+                        <path d="M36 52H64L60 60C68 65 70 78 60 86H40C30 78 32 65 40 60L36 52Z" fill="#C5A059" stroke="#8C6239" stroke-width="2"/>
+                        <!-- Swastik / Auspicious Dot -->
+                        <circle cx="50" cy="72" r="3.5" fill="#9B1B30"/>
+                        <!-- Mango Leaves -->
+                        <path d="M34 52C24 46 20 38 26 34C32 38 35 45 38 52" fill="#1B4D3E"/>
+                        <path d="M66 52C76 46 80 38 74 34C68 38 65 45 62 52" fill="#1B4D3E"/>
+                    </svg>
+                </div>
+                <p class="font-devanagari text-crimson-royal font-bold text-lg sm:text-xl tracking-wide">
+                    ॥ श्री गणेशाय नमः ॥
+                </p>
+                <p class="font-cinzel text-gold-dark text-xs sm:text-sm tracking-[0.28em] uppercase font-bold mt-0.5">
+                    Shree Ganeshaya Namah
+                </p>
+            </div>
+
+            <!-- Right Bell -->
+            <div class="animate-bell-delay flex flex-col items-center">
+                <div class="w-0.5 h-12 sm:h-16 bg-gradient-to-b from-gold-dark to-gold"></div>
+                <svg class="w-8 h-10 sm:w-10 sm:h-12 text-gold-dark drop-shadow" viewBox="0 0 64 80" fill="none">
+                    <path d="M32 6C24 6 18 14 18 26C18 42 10 52 6 58H58C54 52 46 42 46 26C46 14 40 6 32 6Z" fill="url(#brassGrad2)" stroke="#6E4A26" stroke-width="2"/>
+                    <circle cx="32" cy="63" r="5" fill="#8C6239"/>
+                    <path d="M22 68C25 74 39 74 42 68" stroke="#9B1B30" stroke-width="2.5" stroke-linecap="round"/>
+                    <defs>
+                        <linearGradient id="brassGrad2" x1="6" y1="6" x2="58" y2="58" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#E5C98B"/>
+                            <stop offset="0.5" stop-color="#C5A059"/>
+                            <stop offset="1" stop-color="#8C6239"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== 2. ROYAL HERO SECTION ==================== -->
+    <section class="relative px-4 pt-2 pb-16 max-w-5xl mx-auto text-center">
+        <!-- Rotating Background Lotus Mandala -->
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.07] overflow-hidden">
+            <svg class="w-[520px] h-[520px] sm:w-[680px] sm:h-[680px] animate-mandala text-gold-dark" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="0.8">
+                <circle cx="100" cy="100" r="92"/>
+                <circle cx="100" cy="100" r="78" stroke-dasharray="3 3"/>
+                <circle cx="100" cy="100" r="60"/>
+                <circle cx="100" cy="100" r="40"/>
+                <g>
+                    <path d="M100 8 C112 35, 112 35, 100 60 C88 35, 88 35, 100 8 Z"/>
+                    <path d="M100 192 C112 165, 112 165, 100 140 C88 165, 88 165, 100 192 Z"/>
+                    <path d="M8 100 C35 112, 35 112, 60 100 C35 88, 35 88, 8 100 Z"/>
+                    <path d="M192 100 C165 112, 165 112, 140 100 C165 88, 165 88, 192 100 Z"/>
+                    <path d="M35 35 C62 45, 62 45, 72 72 C45 62, 45 62, 35 35 Z"/>
+                    <path d="M165 165 C138 155, 138 155, 128 128 C155 138, 155 138, 165 165 Z"/>
+                    <path d="M165 35 C155 62, 155 62, 128 72 C138 45, 138 45, 165 35 Z"/>
+                    <path d="M35 165 C45 138, 45 138, 72 128 C62 155, 62 155, 35 165 Z"/>
+                </g>
+            </svg>
+        </div>
+
+        <!-- Main Royal Invitation Frame -->
+        <div class="filigree-card rounded-3xl p-6 sm:p-12 md:p-14 relative z-10">
+            <!-- Subtitle -->
+            <div class="inline-flex items-center gap-3 px-5 py-1.5 rounded-full bg-emerald-royal/10 border border-gold/50 mb-5">
+                <span class="w-2 h-2 rounded-full bg-crimson-royal"></span>
+                <span class="font-cinzel text-xs sm:text-sm tracking-[0.3em] uppercase text-emerald-royal font-bold">
+                    Wedding Invitation
+                </span>
+                <span class="w-2 h-2 rounded-full bg-crimson-royal"></span>
+            </div>
+
+            <!-- Couple Names (Bride First: Pooja & Ritvik) -->
+            <h1 class="font-cinzel text-4xl sm:text-6xl md:text-7xl font-bold text-crimson-royal tracking-wide leading-tight drop-shadow-sm">
+                Pooja
+                <span class="block sm:inline font-script text-5xl sm:text-6xl md:text-7xl text-gold-dark mx-2 font-normal">&amp;</span>
+                Ritvik
+            </h1>
+
+            <p class="mt-3 text-lg sm:text-xl italic text-gold-deep font-medium max-w-xl mx-auto">
+                Together with our beloved families, we joyfully invite you to bless and celebrate the sacred union of our souls
+            </p>
+
+            <!-- Ornate Mughal Arch Portrait with Namaste Couple Illustration -->
+            <div class="relative max-w-sm mx-auto my-8">
+                <!-- Outer Gold Arch Glow -->
+                <div class="p-2.5 bg-gradient-to-b from-gold via-gold-light to-gold-dark mughal-arch shadow-royal">
+                    <div class="bg-parchment mughal-arch overflow-hidden relative aspect-[3/4]">
+                        <img 
+                            src="./images/haldi.jpg" 
+                            alt="Pooja and Ritvik welcoming guests with traditional Namaste" 
+                            class="w-full h-full object-cover object-top"
+                            onerror="this.onerror=null; this.src='https://placehold.co/600x800/F4ECE1/8C6239?text=Pooja+%26+Ritvik';"
+                        />
+                        <!-- Subtle Bottom Vignette -->
+                        <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-emerald-deep/70 via-transparent to-transparent flex items-end justify-center pb-3">
+                            <span class="text-ivory/95 text-xs tracking-[0.25em] uppercase font-cinzel">
+                                Atithi Devo Bhava
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Circular Embossed Wax Monogram Seal (P&R) Overlapping Bottom Center -->
+                <div class="wax-seal w-20 h-20 sm:w-24 sm:h-24 rounded-full mx-auto -mt-10 relative z-20 flex flex-col items-center justify-center border-2 border-gold-light text-ivory transform hover:scale-105 transition-transform duration-300">
+                    <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-dashed border-gold-light/70 flex flex-col items-center justify-center">
+                        <span class="font-cinzel text-lg sm:text-xl font-bold tracking-widest text-gold-light">P&amp;R</span>
+                        <span class="text-[9px] uppercase tracking-[0.2em] text-ivory/80 mt-0.5">Dec 2026</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Primary Date & Venue Highlights -->
+            <div class="mt-6 pt-6 border-t border-gold/40 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+                <div class="bg-parchment/80 border border-gold/50 rounded-2xl p-4 flex flex-col items-center justify-center">
+                    <span class="text-xs font-cinzel uppercase tracking-[0.25em] text-emerald-royal font-bold">Shubh Vivah (Wedding)</span>
+                    <p class="text-xl sm:text-2xl font-bold text-crimson-royal mt-1">12 December 2026 • 8:00 PM IST</p>
+                    <p class="text-sm sm:text-base text-gold-deep font-medium mt-0.5">Grand Luxury Banquets &amp; Resort, Faridabad</p>
+                </div>
+                <div class="bg-parchment/80 border border-gold/50 rounded-2xl p-4 flex flex-col items-center justify-center">
+                    <span class="text-xs font-cinzel uppercase tracking-[0.25em] text-emerald-royal font-bold">Pritibhoj (Grand Reception)</span>
+                    <p class="text-xl sm:text-2xl font-bold text-crimson-royal mt-1">14 December 2026 • 7:30 PM IST</p>
+                    <p class="text-sm sm:text-base text-gold-deep font-medium mt-0.5">Abhinandan Wedding Hall, Ranjhawala, Dehradun</p>
+                </div>
+            </div>
+
+            <!-- Quick Action Buttons -->
+            <div class="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+                <button onclick="downloadAllEventsICS()" 
+                    class="inline-flex items-center gap-2.5 bg-emerald-royal hover:bg-emerald-deep text-ivory font-semibold px-6 py-3 rounded-full border border-gold shadow-card transition-all duration-300 text-sm sm:text-base tracking-wide cursor-pointer">
+                    <svg class="w-5 h-5 text-gold-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                    </svg>
+                    <span>Save All Dates (.ics)</span>
+                </button>
+                <a href="#events-section" 
+                    class="inline-flex items-center gap-2 bg-ivory hover:bg-parchment text-crimson-royal font-semibold px-6 py-3 rounded-full border border-crimson-royal/60 transition-all duration-300 text-sm sm:text-base tracking-wide">
+                    <span>Explore Celebrations</span>
+                    <span>↓</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 3. LIVE COUNTDOWN TIMER ==================== -->
+    <section class="py-10 px-4 max-w-4xl mx-auto reveal">
+        <div class="bg-emerald-royal text-ivory rounded-3xl p-6 sm:p-10 border-2 border-gold shadow-royal relative overflow-hidden text-center">
+            <!-- Subtle Corner Gold Flourishes -->
+            <div class="absolute top-3 left-3 w-8 h-8 border-t-2 border-l-2 border-gold/60 rounded-tl-lg"></div>
+            <div class="absolute top-3 right-3 w-8 h-8 border-t-2 border-r-2 border-gold/60 rounded-tr-lg"></div>
+            <div class="absolute bottom-3 left-3 w-8 h-8 border-b-2 border-l-2 border-gold/60 rounded-bl-lg"></div>
+            <div class="absolute bottom-3 right-3 w-8 h-8 border-b-2 border-r-2 border-gold/60 rounded-br-lg"></div>
+
+            <p class="font-cinzel text-xs sm:text-sm uppercase tracking-[0.3em] text-gold-light">
+                Counting Every Auspicious Moment Until
+            </p>
+            <h2 class="font-cinzel text-2xl sm:text-3xl font-bold text-ivory mt-1">
+                12 December 2026 • 8:00 PM IST
+            </h2>
+
+            <!-- Countdown Boxes -->
+            <div id="countdown-grid" class="grid grid-cols-4 gap-2.5 sm:gap-5 max-w-2xl mx-auto mt-7">
+                <div class="bg-emerald-deep/90 border border-gold/70 rounded-2xl p-3 sm:p-5 shadow-inner">
+                    <span id="cd-days" class="block font-cinzel text-2xl sm:text-4xl md:text-5xl font-bold text-gold-light">00</span>
+                    <span class="text-[11px] sm:text-xs uppercase tracking-[0.2em] text-ivory/80 mt-1 block">Days</span>
+                </div>
+                <div class="bg-emerald-deep/90 border border-gold/70 rounded-2xl p-3 sm:p-5 shadow-inner">
+                    <span id="cd-hours" class="block font-cinzel text-2xl sm:text-4xl md:text-5xl font-bold text-gold-light">00</span>
+                    <span class="text-[11px] sm:text-xs uppercase tracking-[0.2em] text-ivory/80 mt-1 block">Hours</span>
+                </div>
+                <div class="bg-emerald-deep/90 border border-gold/70 rounded-2xl p-3 sm:p-5 shadow-inner">
+                    <span id="cd-minutes" class="block font-cinzel text-2xl sm:text-4xl md:text-5xl font-bold text-gold-light">00</span>
+                    <span class="text-[11px] sm:text-xs uppercase tracking-[0.2em] text-ivory/80 mt-1 block">Minutes</span>
+                </div>
+                <div class="bg-emerald-deep/90 border border-gold/70 rounded-2xl p-3 sm:p-5 shadow-inner">
+                    <span id="cd-seconds" class="block font-cinzel text-2xl sm:text-4xl md:text-5xl font-bold text-gold-light">00</span>
+                    <span class="text-[11px] sm:text-xs uppercase tracking-[0.2em] text-ivory/80 mt-1 block">Seconds</span>
+                </div>
+            </div>
+
+            <p id="countdown-status" class="mt-5 text-sm italic text-gold-light/90">
+                Two hearts, two families, one eternal bond of love &amp; dharma
+            </p>
+        </div>
+    </section>
+
+    <!-- ==================== 4. SACRED UNION & FAMILY INVITATION ==================== -->
+    <section class="py-12 px-4 max-w-5xl mx-auto reveal">
+        <div class="filigree-card rounded-3xl p-6 sm:p-10 md:p-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Left Watercolor Gathbandhan & Sacred Steps Illustration -->
+                <div class="lg:col-span-5">
+                    <div class="rounded-2xl overflow-hidden border-2 border-gold shadow-card bg-parchment relative">
+                        <img 
+                            src="./images/feet-motif.jpg" 
+                            alt="Sacred Gathbandhan knot and seven steps watercolor illustration" 
+                            class="w-full h-auto object-cover"
+                            onerror="this.onerror=null; this.src='https://placehold.co/500x650/FBF7F0/9B1B30?text=Sacred+Gathbandhan';"
+                        />
+                        <div class="bg-ivory/95 px-4 py-3 text-center border-t border-gold/40">
+                            <p class="font-devanagari text-crimson-royal text-sm font-semibold">
+                                जन्म-जन्मांतर का अटूट बंधन
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Formal Invitation & Family Blessings -->
+                <div class="lg:col-span-7 text-center lg:text-left space-y-5">
+                    <div class="inline-block px-4 py-1 rounded-full bg-crimson-royal/10 border border-crimson-royal/30 text-crimson-royal font-cinzel text-xs tracking-[0.25em] uppercase font-bold">
+                        With Divine Blessings
+                    </div>
+
+                    <h2 class="font-cinzel text-2xl sm:text-4xl font-bold text-emerald-royal leading-snug">
+                        A Sacred Union of Two Families
+                    </h2>
+
+                    <p class="font-devanagari text-base sm:text-lg text-gold-deep bg-parchment/90 p-4 rounded-2xl border border-gold/40 leading-relaxed text-center">
+                        "मंगलम भगवान विष्णु, मंगलम गरुड़ ध्वजः।<br/>
+                        मंगलम पुण्डरीकाक्ष, मंगलाय तनो हरिः॥"
+                    </p>
+
+                    <p class="text-lg sm:text-xl text-stone-800 leading-relaxed">
+                        With immense joy and gratitude to the Almighty, the <strong class="text-crimson-royal">Kaushik Family</strong> and the <strong class="text-crimson-royal">Kothari Family</strong> cordially solicit your gracious presence and blessings on the auspicious occasion of the wedding of
+                    </p>
+
+                    <div class="py-3 px-5 rounded-2xl bg-gradient-to-r from-parchment via-ivory to-parchment border border-gold/50 text-center">
+                        <p class="font-cinzel text-2xl sm:text-3xl font-bold text-crimson-royal">
+                            Ayushmati Pooja
+                        </p>
+                        <p class="text-sm text-gold-deep italic mt-0.5">
+                            (Daughter of the Kaushik Family)
+                        </p>
+                        <p class="font-script text-3xl text-emerald-royal my-1">&amp; Weds &amp;</p>
+                        <p class="font-cinzel text-2xl sm:text-3xl font-bold text-crimson-royal">
+                            Chiranjeevi Ritvik
+                        </p>
+                        <p class="text-sm text-gold-deep italic mt-0.5">
+                            (Beloved Son of Smt. Shivani Kothari &amp; Shri Devendra Dutt Kothari)
+                        </p>
+                    </div>
+
+                    <p class="text-base sm:text-lg italic text-emerald-royal font-semibold text-center lg:text-left">
+                        — With love, the Kothari and Kaushik families
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 5. ROYAL WEDDING FUNCTIONS TIMELINE ==================== -->
+    <section id="events-section" class="py-14 px-4 max-w-6xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+            <span class="font-cinzel text-xs sm:text-sm uppercase tracking-[0.3em] text-gold-dark font-bold">
+                Mangalik Karyakram
+            </span>
+            <h2 class="font-cinzel text-3xl sm:text-5xl font-bold text-crimson-royal mt-2">
+                Wedding Celebrations
+            </h2>
+            <div class="w-32 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto my-4"></div>
+            <p class="text-lg text-stone-700">
+                Join us across four joyous ceremonies filled with music, turmeric blessings, sacred vows, and royal hospitality.
+            </p>
+        </div>
+
+        <!-- 4 Event Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+
+            <!-- EVENT 1: MEHNDI -->
+            <article class="filigree-card rounded-3xl overflow-hidden flex flex-col justify-between reveal group">
+                <div>
+                    <div class="relative h-72 sm:h-80 overflow-hidden bg-parchment">
+                        <img 
+                            src="./images/mehndi.jpg" 
+                            alt="Mehndi Ceremony Illustration of Pooja and Ritvik" 
+                            class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                            onerror="this.onerror=null; this.src='https://placehold.co/600x500/E5C98B/1B4D3E?text=Mehndi+Ceremony';"
+                        />
+                        <div class="absolute top-4 left-4 bg-emerald-royal/95 text-gold-light font-cinzel text-xs tracking-widest uppercase px-4 py-1.5 rounded-full border border-gold shadow">
+                            Ceremony I
+                        </div>
+                    </div>
+                    <div class="p-6 sm:p-8">
+                        <div class="flex items-center justify-between gap-2 flex-wrap">
+                            <h3 class="font-cinzel text-2xl sm:text-3xl font-bold text-emerald-royal">Mehndi</h3>
+                            <span class="text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-marigold/15 text-gold-deep border border-marigold/40">
+                                Henna &amp; Folk Beats
+                            </span>
+                        </div>
+                        <p class="mt-3 text-stone-700 text-base sm:text-lg leading-relaxed">
+                            An evening of intricate henna artistry, vibrant marigolds, dholak rhythms, and joyful laughter as bridal festivities commence.
+                        </p>
+
+                        <div class="mt-5 space-y-2.5 pt-4 border-t border-gold/30 text-base">
+                            <div class="flex items-center gap-3 text-stone-800">
+                                <span class="text-crimson-royal text-lg">📅</span>
+                                <span><strong>Friday, 11 December 2026</strong></span>
+                            </div>
+                            <div class="flex items-center gap-3 text-stone-800">
+                                <span class="text-crimson-royal text-lg">⏰</span>
+                                <span><strong>8:00 PM IST</strong> onwards</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-stone-800">
+                                <span class="text-crimson-royal text-lg">📍</span>
+                                <span><strong>Faridabad</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="px-6 sm:px-8 pb-6 sm:pb-8 flex flex-wrap gap-2.5">
+                    <button onclick="downloadSingleICS(0)" 
+                        class="flex-1 min-w-[140px] inline-flex items-center justify-center gap-2 bg-emerald-royal hover:bg-emerald-deep text-ivory text-sm font-semibold py-2.5 px-4 rounded-xl border border-gold transition-colors cursor-pointer">
+                        <span>📥</span>
+                        <span>Download .ICS</span>
+                    </button>
+                    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pooja+%26+Ritvik+-+Mehndi+Ceremony&dates=20261211T143000Z/20261211T173000Z&details=Mehndi+Ceremony+for+Pooja+%26+Ritvik&location=Faridabad" 
+                        target="_blank" rel="noopener noreferrer"
+                        class="flex-1 min-w-[140px] inline-flex items-center justify-center gap-2 bg-parchment hover:bg-gold-light/30 text-gold-deep text-sm font-semibold py-2.5 px-4 rounded-xl border border-gold transition-colors">
+                        <span>🗓️</span>
+                        <span>Google Calendar</span>
+                    </a>
+                </div>
+            </article>
+
+            <!-- EVENT 2: HALDI -->
+            <article class="filigree-card rounded-3xl overflow-hidden flex flex-col justify-between reveal group">
+                <div>
+                    <div class="relative h-72 sm:h-80 overflow-hidden bg-parchment">
+                        <img 
+                            src="./images/haldi2.jpg" 
+                            alt="Auspicious Haldi and Wedding Functions Watercolor Board" 
+                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                            onerror="this.onerror=null; this.src='https://placehold.co/600x500/FBF7F0/E89B25?text=Haldi+Ceremony';"
+                        />
+                        <div class="absolute top-4 left-4 bg-marigold text-ivory font-cinzel text-xs tracking-widest uppercase px-4 py-1.5 rounded-full border border-ivory/60 shadow">
+                            Ceremony II
+                        </div>
+                    </div>
+                    <div class="p-6 sm:p-8">
+                        <div class="flex items-center justify-between gap-2 flex-wrap">
+                            <h3 class="font-cinzel text-2xl sm:text-3xl font-bold text-gold-deep">Haldi</h3>
+                            <span class="text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-marigold/20 text-gold-deep border border-marigold/50">
+                                Sacred Turmeric Glow
+                            </span>
+                        </div>
+                        <p class="mt-3 text-stone-700 text-base sm:text-lg leading-relaxed">
+                            Bathed in golden turmeric, rose petals, and sacred blessings from elders to herald prosperity and radiance before the wedding vows.
+                        </p>
+
+                        <div class="mt-5 space-y-2.5 pt-4 border-t border-gold/30 text-base">
+                            <div class="flex items-center gap-3 text-stone-800">
+                                <span class="text-crimson-royal text-lg">📅</span>
+                                <span><strong>Thursday, 12 December 2026</strong></span>
+                            </div>
+                            <div class="flex items-center gap-3 text-stone-800">
+                                <span class="text-crimson-royal text-lg">⏰</span>
+                                <span><strong>11:00 AM IST</strong></span>
+                            </div>
+                            <div class="flex items-center gap-3 text-stone-800">
+                                <span class="text-crimson-royal text-lg">📍</span>
+                                <span><strong>Faridabad</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="px-6 sm:px-8 pb-6 sm:pb-8 flex flex-wrap gap-2.5">
+                    <button onclick="downloadSingleICS(1)" 
+                        class="flex-1 min-w-[140px] inline-flex items-center justify-center gap-2 bg-emerald-royal hover:bg-emerald-deep text-ivory text-sm font-semibold py-2.5 px-4 rounded-xl border border-gold transition-colors cursor-pointer">
+                        <span>📥</span>
+                        <span>Download .ICS</span>
+                    </button>
+                    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pooja+%26+Ritvik+-+Haldi+Ceremony&dates=20261212T053000Z/20261212T080000Z&details=Auspicious+Haldi+Ceremony+for+Pooja+%26+Ritvik&location=Faridabad" 
+                        target="_blank" rel="noopener noreferrer"
+                        class="flex-1 min-w-[140px] inline-flex items-center justify-center gap-2 bg-parchment hover:bg-gold-light/30 text-gold-deep text-sm font-semibold py-2.5 px-4 rounded-xl border border-gold transition-colors">
+                        <span>🗓️</span>
+                        <span>Google Calendar</span>
+                    </a>
+                </div>
+            </article>
+
+            <!-- EVENT 3: SHUBH VIVAH (WEDDING) -->
+            <article class="filigree-card rounded-3xl overflow-hidden flex flex-col justify-between reveal group ring-2 ring-crimson-royal/30">
+                <div>
+                    <div class="relative h-72 sm:h-80 overflow-hidden bg-parchment">
+                        <img 
+                            src="./images/wedding.jpg" 
+                            alt="Royal Wedding Portrait of Bride Pooja and Groom Ritvik" 
+                            class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                            onerror="this.onerror=null; this.src='https://placehold.co/600x500/9B1B30/FBF7F0?text=Shubh+Vivah';"
+                        />
+                        <div class="absolute top-4 left-4 bg-crimson-royal text-gold-light font-cinzel text-xs tracking-widest uppercase px-4 py-1.5 rounded-full border border-gold-light shadow">
+                            Main Ceremony • Shubh Vivah
+                        </div>
+                    </div>
+                    <div class="p-6 sm:p-8">
+                        <div class="flex items-center justify-between gap-2 flex-wrap">
+                            <h3 class="font-cinzel text-2xl sm:text-3xl font-bold text-crimson-royal">Wedding</h3>
+                            <span class="text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-crimson-royal/10 text-crimson-royal border border-crimson-royal/30">
+                                Pheras &amp; Varmala
+                            </span>
+                        </div>
+                        <p class="mt-3 text-stone-700 text-base sm:text-lg leading-relaxed">
+                            Around the sacred Agni, Pooja &amp; Ritvik take their seven vows of eternity amidst Vedic chants, floral showers, and royal celebration.
+                        </p>
+
+                        <div class="mt-5 space-y-2.5 pt-4 border-t border-gold/30 text-base">
+                            <div class="flex items-center gap-3 text-stone-800">
+                                <span class="text-crimson-royal text-lg">📅</span>
+                                <span><strong>Friday, 12 December 2026</strong></span>
+                            </div>
+                            <div class="flex items-center gap-3 text-stone-800">
+                                <span class="text-crimson-royal text-lg">⏰</span>
+                                <span><strong>8:00 PM IST</strong> (Baraat &amp; Lagna)</span>
+                            </div>
+                            <div class="flex items-start gap-3 text-stone-800">
+                                <span class="text-crimson-royal text-lg mt-0.5">📍</span>
+                                <span><strong>Grand Luxury Banquets &amp; Resort (Faridabad)</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="px-6 sm:px-8 pb-6 sm:pb-8 flex flex-wrap gap-2.5">
+                    <button onclick="downloadSingleICS(2)" 
+                        class="flex-1 min-w-[140px] inline-flex items-center justify-center gap-2 bg-crimson-royal hover:bg-crimson-deep text-ivory text-sm font-semibold py-2.5 px-4 rounded-xl border border-gold-light transition-colors cursor-pointer">
+                        <span>📥</span>
+                        <span>Download .ICS</span>
+                    </button>
+                    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pooja+%26+Ritvik+-+Shubh+Vivah+(Wedding)&dates=20261212T143000Z/20261212T193000Z&details=Royal+Wedding+Ceremony+of+Pooja+%26+Ritvik&location=Grand+Luxury+Banquets+%26+Resort,+Faridabad" 
+                        target="_blank" rel="noopener noreferrer"
+                        class="flex-1 min-w-[140px] inline-flex items-center justify-center gap-2 bg-parchment hover:bg-gold-light/30 text-crimson-royal text-sm font-semibold py-2.5 px-4 rounded-xl border border-gold transition-colors">
+                        <span>🗓️</span>
+                        <span>Google Calendar</span>
+                    </a>
+                </div>
+            </article>
+
+            <!-- EVENT 4: RECEPTION -->
+            <article class="filigree-card rounded-3xl overflow-hidden flex flex-col justify-between reveal group">
+                <div>
+                    <div class="relative h-72 sm:h-80 overflow-hidden bg-parchment">
+                        <img 
+                            src="./images/reception.jpg" 
+                            alt="Grand Reception Evening Portrait of Pooja and Ritvik" 
+                            class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                            onerror="this.onerror=null; this.src='https://placehold.co/600x500/1B4D3E/E5C98B?text=Grand+Reception';"
+                        />
+                        <div class="absolute top-4 left-4 bg-emerald-deep/95 text-gold-light font-cinzel text-xs tracking-widest uppercase px-4 py-1.5 rounded-full border border-gold shadow">
+                            Pritibhoj • Dehradun
+                        </div>
+                    </div>
+                    <div class="p-6 sm:p-8">
+                        <div class="flex items-center justify-between gap-2 flex-wrap">
+                            <h3 class="font-cinzel text-2xl sm:text-3xl font-bold text-emerald-royal">Reception</h3>
+                            <span class="text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-emerald-royal/10 text-emerald-royal border border-emerald-royal/30">
+                                Royal Banquet Dinner
+                            </span>
+                        </div>
+                        <p class="mt-3 text-stone-700 text-base sm:text-lg leading-relaxed">
+                            Celebrate the newlyweds in the serene hills of Dehradun with a starlit evening of warm wishes, music, and a lavish royal feast.
+                        </p>
+
+                        <div class="mt-5 space-y-2.5 pt-4 border-t border-gold/30 text-base">
+                            <div class="flex items-center gap-3 text-stone-800">
+                                <span class="text-crimson-royal text-lg">📅</span>
+                                <span><strong>Sunday, 14 December 2026</strong></span>
+                            </div>
+                            <div class="flex items-center gap-3 text-stone-800">
+                                <span class="text-crimson-royal text-lg">⏰</span>
+                                <span><strong>7:30 PM IST</strong> onwards</span>
+                            </div>
+                            <div class="flex items-start gap-3 text-stone-800">
+                                <span class="text-crimson-royal text-lg mt-0.5">📍</span>
+                                <span><strong>Abhinandan Wedding Hall, Ranjhawala (Dehradun)</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="px-6 sm:px-8 pb-6 sm:pb-8 flex flex-wrap gap-2.5">
+                    <button onclick="downloadSingleICS(3)" 
+                        class="flex-1 min-w-[140px] inline-flex items-center justify-center gap-2 bg-emerald-royal hover:bg-emerald-deep text-ivory text-sm font-semibold py-2.5 px-4 rounded-xl border border-gold transition-colors cursor-pointer">
+                        <span>📥</span>
+                        <span>Download .ICS</span>
+                    </button>
+                    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pooja+%26+Ritvik+-+Wedding+Reception+(Pritibhoj)&dates=20261214T140000Z/20261214T180000Z&details=Grand+Reception+for+Pooja+%26+Ritvik+at+Abhinandan+Wedding+Hall,+Ranjhawala,+Dehradun&location=Abhinandan+Wedding+Hall,+Ranjhawala,+Dehradun" 
+                        target="_blank" rel="noopener noreferrer"
+                        class="flex-1 min-w-[140px] inline-flex items-center justify-center gap-2 bg-parchment hover:bg-gold-light/30 text-gold-deep text-sm font-semibold py-2.5 px-4 rounded-xl border border-gold transition-colors">
+                        <span>🗓️</span>
+                        <span>Google Calendar</span>
+                    </a>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- ==================== 6. VENUE & DIRECTIONS SECTION ==================== -->
+    <section class="py-12 px-4 max-w-5xl mx-auto reveal">
+        <div class="filigree-card rounded-3xl p-6 sm:p-10">
+            <div class="text-center max-w-2xl mx-auto mb-8">
+                <span class="font-cinzel text-xs uppercase tracking-[0.3em] text-emerald-royal font-bold">
+                    Destinations of Joy
+                </span>
+                <h2 class="font-cinzel text-3xl sm:text-4xl font-bold text-crimson-royal mt-1">
+                    Royal Venues &amp; Navigation
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Featured Main Venue Card: Abhinandan Wedding Hall -->
+                <div class="bg-parchment/90 rounded-2xl p-6 border border-gold flex flex-col justify-between shadow-sm">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 rounded-full bg-crimson-royal text-ivory text-xs font-cinzel tracking-wider uppercase">
+                                Primary Venue • Dehradun
+                            </span>
+                            <span class="text-2xl">🏛️</span>
+                        </div>
+                        <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-emerald-royal">
+                            Abhinandan Wedding Hall
+                        </h3>
+                        <p class="text-stone-700 font-medium mt-1">
+                            Ranjhawala, Raipur, Dehradun (Uttarakhand)
+                        </p>
+                        <p class="text-sm text-gold-deep mt-2 italic">
+                            Hosting the Grand Reception (Pritibhoj) on 14 December 2026 • 7:30 PM IST
+                        </p>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-gold/40 flex flex-wrap gap-3">
+                        <a href="https://share.google/rkbc6GpRXT1rfw3hN" target="_blank" rel="noopener noreferrer"
+                            class="w-full inline-flex items-center justify-center gap-2 bg-crimson-royal hover:bg-crimson-deep text-ivory font-semibold py-3 px-5 rounded-xl shadow transition-all text-sm sm:text-base">
+                            <svg class="w-5 h-5 text-gold-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                            <span>Open in Google Maps</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Wedding Venue Card: Grand Luxury Banquets & Resort -->
+                <div class="bg-parchment/90 rounded-2xl p-6 border border-gold flex flex-col justify-between shadow-sm">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 rounded-full bg-emerald-royal text-gold-light text-xs font-cinzel tracking-wider uppercase">
+                                Wedding Venue • Faridabad
+                            </span>
+                            <span class="text-2xl">🕌</span>
+                        </div>
+                        <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-emerald-royal">
+                            Grand Luxury Banquets &amp; Resort
+                        </h3>
+                        <p class="text-stone-700 font-medium mt-1">
+                            Faridabad, Haryana (NCR)
+                        </p>
+                        <p class="text-sm text-gold-deep mt-2 italic">
+                            Hosting Shubh Vivah (Wedding) on 12 December 2026 • 8:00 PM IST
+                        </p>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-gold/40 flex flex-wrap gap-3">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Grand+Luxury+Banquets+and+Resort+Faridabad" target="_blank" rel="noopener noreferrer"
+                            class="w-full inline-flex items-center justify-center gap-2 bg-emerald-royal hover:bg-emerald-deep text-ivory font-semibold py-3 px-5 rounded-xl shadow transition-all text-sm sm:text-base">
+                            <svg class="w-5 h-5 text-gold-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                            <span>Locate Faridabad Venue</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 7. ROYAL RSVP FORM & WHATSAPP INTEGRATION ==================== -->
+    <section id="rsvp-section" class="py-14 px-4 max-w-4xl mx-auto reveal">
+        <div class="filigree-card rounded-3xl p-6 sm:p-10 md:p-12 relative">
+            <!-- Header -->
+            <div class="text-center max-w-xl mx-auto mb-8">
+                <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-emerald-royal/10 border border-gold/50 text-emerald-royal font-cinzel text-xs uppercase tracking-[0.25em] font-bold mb-2">
+                    Kindly Respond
+                </div>
+                <h2 class="font-cinzel text-3xl sm:text-4xl font-bold text-crimson-royal">
+                    RSVP &amp; Blessings
+                </h2>
+                <p class="text-stone-700 text-base sm:text-lg mt-2">
+                    Your presence is the greatest gift to us. Confirm your attendance below to send your RSVP directly to <strong class="text-emerald-royal">RK (+91 8077758603)</strong>.
+                </p>
+            </div>
+
+            <!-- RSVP Form -->
+            <form id="rsvp-form" onsubmit="handleRSVPSubmit(event)" class="space-y-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <!-- Full Name -->
+                    <div>
+                        <label for="guest-name" class="block text-sm font-cinzel font-bold uppercase tracking-wider text-gold-deep mb-1.5">
+                            Guest Full Name *
+                        </label>
+                        <input type="text" id="guest-name" required placeholder="e.g. Sharma Family / Aarav Verma"
+                            class="w-full px-4 py-3 rounded-xl bg-ivory border border-gold/70 focus:border-crimson-royal focus:ring-2 focus:ring-crimson-royal/20 outline-none text-stone-900 text-base transition" />
+                    </div>
+
+                    <!-- Number of Guests -->
+                    <div>
+                        <label for="guest-count" class="block text-sm font-cinzel font-bold uppercase tracking-wider text-gold-deep mb-1.5">
+                            Number of Guests *
+                        </label>
+                        <select id="guest-count" required
+                            class="w-full px-4 py-3 rounded-xl bg-ivory border border-gold/70 focus:border-crimson-royal focus:ring-2 focus:ring-crimson-royal/20 outline-none text-stone-900 text-base transition">
+                            <option value="1 Guest">1 Guest</option>
+                            <option value="2 Guests" selected>2 Guests</option>
+                            <option value="3 Guests">3 Guests</option>
+                            <option value="4 Guests">4 Guests</option>
+                            <option value="5 Guests">5 Guests</option>
+                            <option value="6+ Family Members">6+ Family Members</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Family Side -->
+                <div>
+                    <label class="block text-sm font-cinzel font-bold uppercase tracking-wider text-gold-deep mb-2">
+                        Honored Guest Of
+                    </label>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <label class="flex items-center gap-3 p-3.5 rounded-xl border border-gold/60 bg-ivory cursor-pointer hover:bg-parchment transition">
+                            <input type="radio" name="family-side" value="Bride's Side (Kaushik Family)" checked class="w-4 h-4 accent-crimson-royal">
+                            <span class="font-semibold text-stone-800">Bride's Side (Pooja — Kaushik Family)</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3.5 rounded-xl border border-gold/60 bg-ivory cursor-pointer hover:bg-parchment transition">
+                            <input type="radio" name="family-side" value="Groom's Side (Kothari Family)" class="w-4 h-4 accent-crimson-royal">
+                            <span class="font-semibold text-stone-800">Groom's Side (Ritvik — Kothari Family)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Events Attending Checkboxes -->
+                <div>
+                    <label class="block text-sm font-cinzel font-bold uppercase tracking-wider text-gold-deep mb-2">
+                        Functions You Will Grace *
+                    </label>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <label class="flex items-center gap-3 p-3.5 rounded-xl border border-gold/60 bg-ivory cursor-pointer hover:bg-parchment transition">
+                            <input type="checkbox" name="events" value="Mehndi (11 Dec • Faridabad)" checked class="w-4 h-4 accent-emerald-royal rounded">
+                            <span class="text-stone-800"><strong>Mehndi</strong> — 11 Dec (8:00 PM)</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3.5 rounded-xl border border-gold/60 bg-ivory cursor-pointer hover:bg-parchment transition">
+                            <input type="checkbox" name="events" value="Haldi (12 Dec • Faridabad)" checked class="w-4 h-4 accent-emerald-royal rounded">
+                            <span class="text-stone-800"><strong>Haldi</strong> — 12 Dec (11:00 AM)</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3.5 rounded-xl border border-gold/60 bg-ivory cursor-pointer hover:bg-parchment transition">
+                            <input type="checkbox" name="events" value="Wedding (12 Dec • Grand Luxury Banquets, Faridabad)" checked class="w-4 h-4 accent-crimson-royal rounded">
+                            <span class="text-stone-800"><strong>Wedding</strong> — 12 Dec (8:00 PM)</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3.5 rounded-xl border border-gold/60 bg-ivory cursor-pointer hover:bg-parchment transition">
+                            <input type="checkbox" name="events" value="Reception (14 Dec • Abhinandan Hall, Dehradun)" checked class="w-4 h-4 accent-crimson-royal rounded">
+                            <span class="text-stone-800"><strong>Reception</strong> — 14 Dec (7:30 PM)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Blessings / Notes -->
+                <div>
+                    <label for="guest-message" class="block text-sm font-cinzel font-bold uppercase tracking-wider text-gold-deep mb-1.5">
+                        Blessings &amp; Arrival Notes (Optional)
+                    </label>
+                    <textarea id="guest-message" rows="3" placeholder="Write your warm wishes for Pooja & Ritvik, or mention travel/stay assistance needed..."
+                        class="w-full px-4 py-3 rounded-xl bg-ivory border border-gold/70 focus:border-crimson-royal focus:ring-2 focus:ring-crimson-royal/20 outline-none text-stone-900 text-base transition"></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="pt-2 flex flex-col sm:flex-row gap-3 justify-center">
+                    <button type="submit"
+                        class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-gradient-to-r from-crimson-royal to-crimson-deep hover:from-crimson-deep hover:to-crimson-royal text-ivory font-cinzel font-bold tracking-wider uppercase px-8 py-4 rounded-full border-2 border-gold-light shadow-royal transition-all duration-300 cursor-pointer text-sm sm:text-base">
+                        <span>Confirm &amp; Send via WhatsApp</span>
+                        <span>💌</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- ==================== 8. RSVP CONFIRMATION MODAL ==================== -->
+    <div id="rsvp-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-stone-950/70 backdrop-blur-sm p-4">
+        <div class="filigree-card rounded-3xl max-w-lg w-full p-6 sm:p-8 text-center relative animate-fadeIn">
+            <button onclick="closeRSVPModal()" aria-label="Close modal"
+                class="absolute top-4 right-4 w-9 h-9 rounded-full bg-parchment hover:bg-gold/30 text-gold-deep font-bold flex items-center justify-center cursor-pointer">
+                ✕
+            </button>
+
+            <div class="wax-seal w-16 h-16 rounded-full mx-auto flex items-center justify-center border border-gold-light text-gold-light font-cinzel font-bold text-lg mb-4">
+                P&amp;R
+            </div>
+
+            <h3 class="font-cinzel text-2xl sm:text-3xl font-bold text-crimson-royal">
+                Dhanyavaad!
+            </h3>
+            <p class="text-stone-700 text-base sm:text-lg mt-2">
+                Your RSVP summary is ready. Tap below to send it directly to <strong>RK (+91 8077758603)</strong> on WhatsApp, or copy the message.
+            </p>
+
+            <!-- Formatted Summary Box -->
+            <div class="mt-4 p-4 rounded-2xl bg-parchment border border-gold/60 text-left text-sm text-stone-800 whitespace-pre-line font-sans" id="rsvp-preview-text"></div>
+
+            <div class="mt-6 flex flex-col sm:flex-row gap-3">
+                <a id="whatsapp-direct-link" href="#" target="_blank" rel="noopener noreferrer"
+                    class="flex-1 inline-flex items-center justify-center gap-2 bg-emerald-royal hover:bg-emerald-deep text-ivory font-semibold py-3 px-5 rounded-xl border border-gold shadow transition">
+                    <span>💬</span>
+                    <span>Open WhatsApp Chat</span>
+                </a>
+                <button onclick="copyRSVPText()" id="copy-rsvp-btn"
+                    class="inline-flex items-center justify-center gap-2 bg-ivory hover:bg-parchment text-gold-deep font-semibold py-3 px-5 rounded-xl border border-gold transition cursor-pointer">
+                    <span>📋</span>
+                    <span>Copy Text</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== 9. ROYAL FOOTER ==================== -->
+    <footer class="mt-12 bg-emerald-deep text-ivory border-t-4 border-gold pt-14 pb-10 px-4 text-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto relative z-10">
+            <!-- Wax Seal Monogram -->
+            <div class="wax-seal w-20 h-20 rounded-full mx-auto flex items-center justify-center border-2 border-gold-light text-gold-light font-cinzel font-bold text-xl shadow-gold-glow mb-5">
+                P&amp;R
+            </div>
+
+            <h2 class="font-cinzel text-2xl sm:text-4xl font-bold text-gold-light tracking-wider">
+                Pooja &amp; Ritvik
+            </h2>
+            <p class="font-devanagari text-gold-light/90 text-base sm:text-lg mt-2">
+                ॥ शुभ विवाह ॥
+            </p>
+
+            <p class="mt-4 text-lg sm:text-xl italic text-ivory/90">
+                With love, the Kothari and Kaushik families
+            </p>
+
+            <!-- Direct RSVP Contact Pill -->
+            <div class="mt-6 inline-flex flex-wrap items-center justify-center gap-3 bg-emerald-royal/80 border border-gold/60 px-6 py-3 rounded-full">
+                <span class="text-sm text-gold-light uppercase tracking-wider font-cinzel">RSVP &amp; Assistance:</span>
+                <a href="https://wa.me/918077758603?text=Namaste%20RK!%20Warmest%20wishes%20for%20Pooja%20%26%20Ritvik's%20wedding." target="_blank" rel="noopener noreferrer"
+                    class="font-semibold text-ivory hover:text-gold-light underline decoration-gold underline-offset-4 transition">
+                    +91 8077758603 (RK)
+                </a>
+            </div>
+
+            <div class="w-48 h-px bg-gold/30 mx-auto my-8"></div>
+
+            <p class="text-xs tracking-[0.25em] uppercase text-ivory/60 font-cinzel">
+                11 – 14 December 2026 • Faridabad &amp; Dehradun
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bottom Gold Ribbon -->
+    <div class="w-full h-2 bg-gradient-to-r from-crimson-royal via-gold to-emerald-royal"></div>
+
+    <!-- ==================== JAVASCRIPT INTERACTIVITY ==================== -->
+    <script>
+        // 1. WEDDING EVENTS DATA FOR CALENDAR (.ICS) GENERATION
+        const weddingEvents = [
+            {
+                title: "Pooja & Ritvik — Mehndi Ceremony",
+                start: "20261211T200000",
+                end: "20261211T233000",
+                location: "Faridabad",
+                description: "Auspicious Mehndi Ceremony celebrating Pooja & Ritvik. With love, the Kothari and Kaushik families."
+            },
+            {
+                title: "Pooja & Ritvik — Haldi Ceremony",
+                start: "20261212T110000",
+                end: "20261212T140000",
+                location: "Faridabad",
+                description: "Sacred Haldi Ceremony for Pooja & Ritvik. With love, the Kothari and Kaushik families."
+            },
+            {
+                title: "Pooja & Ritvik — Shubh Vivah (Wedding)",
+                start: "20261212T200000",
+                end: "20261213T010000",
+                location: "Grand Luxury Banquets & Resort, Faridabad",
+                description: "Royal Wedding Ceremony (Shubh Vivah) of Pooja & Ritvik. With love, the Kothari and Kaushik families."
+            },
+            {
+                title: "Pooja & Ritvik — Grand Reception (Pritibhoj)",
+                start: "20261214T193000",
+                end: "20261214T233000",
+                location: "Abhinandan Wedding Hall, Ranjhawala, Dehradun",
+                description: "Grand Wedding Reception (Pritibhoj) for Pooja & Ritvik at Abhinandan Wedding Hall, Ranjhawala, Dehradun. Google Maps: https://share.google/rkbc6GpRXT1rfw3hN"
+            }
+        ];
+
+        function formatICSContent(eventsList) {
+            let ics = [
+                "BEGIN:VCALENDAR",
+                "VERSION:2.0",
+                "PRODID:-//Pooja and Ritvik Royal Wedding//IN",
+                "CALSCALE:GREGORIAN",
+                "METHOD:PUBLISH"
+            ];
+
+            eventsList.forEach((ev, idx) => {
+                ics.push(
+                    "BEGIN:VEVENT",
+                    `UID:pooja-ritvik-2026-${idx}-${Date.now()}@weddinginvite.in`,
+                    `DTSTAMP:20261117T000000Z`,
+                    `DTSTART;TZID=Asia/Kolkata:${ev.start}`,
+                    `DTEND;TZID=Asia/Kolkata:${ev.end}`,
+                    `SUMMARY:${ev.title}`,
+                    `LOCATION:${ev.location}`,
+                    `DESCRIPTION:${ev.description}`,
+                    "END:VEVENT"
+                );
+            });
+
+            ics.push("END:VCALENDAR");
+            return ics.join("\r\n");
+        }
+
+        function triggerICSDownload(content, filename) {
+            const blob = new Blob([content], { type: "text/calendar;charset=utf-8" });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = url;
+            link.setAttribute("download", filename);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }
+
+        function downloadSingleICS(index) {
+            const ev = weddingEvents[index];
+            const content = formatICSContent([ev]);
+            const slug = ev.title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+            triggerICSDownload(content, `${slug}.ics`);
+        }
+
+        function downloadAllEventsICS() {
+            const content = formatICSContent(weddingEvents);
+            triggerICSDownload(content, "Pooja-and-Ritvik-Wedding-Itinerary.ics");
+        }
+
+        // 2. LIVE COUNTDOWN TIMER (TARGET: 12 DECEMBER 2026, 8:00 PM IST)
+        const weddingTargetDate = new Date("2026-12-12T20:00:00+05:30").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = weddingTargetDate - now;
+
+            const daysEl = document.getElementById("cd-days");
+            const hoursEl = document.getElementById("cd-hours");
+            const minsEl = document.getElementById("cd-minutes");
+            const secsEl = document.getElementById("cd-seconds");
+            const statusEl = document.getElementById("countdown-status");
+
+            if (distance <= 0) {
+                daysEl.textContent = "00";
+                hoursEl.textContent = "00";
+                minsEl.textContent = "00";
+                secsEl.textContent = "00";
+                statusEl.textContent = "॥ शुभ विवाह संपन्न ॥ Celebrating the Eternal Union of Pooja & Ritvik!";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            daysEl.textContent = String(days).padStart(2, "0");
+            hoursEl.textContent = String(hours).padStart(2, "0");
+            minsEl.textContent = String(minutes).padStart(2, "0");
+            secsEl.textContent = String(seconds).padStart(2, "0");
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // 3. RSVP FORM SUBMISSION & WHATSAPP INTEGRATION
+        let latestRSVPMessage = "";
+
+        function handleRSVPSubmit(e) {
+            e.preventDefault();
+
+            const name = document.getElementById("guest-name").value.trim();
+            const count = document.getElementById("guest-count").value;
+            const sideEl = document.querySelector('input[name="family-side"]:checked');
+            const side = sideEl ? sideEl.value : "Family Guest";
+            const message = document.getElementById("guest-message").value.trim();
+
+            const checkedEvents = Array.from(document.querySelectorAll('input[name="events"]:checked'))
+                .map(cb => "• " + cb.value);
+
+            const eventsText = checkedEvents.length > 0 
+                ? checkedEvents.join("\n") 
+                : "• Sending warm blessings from afar";
+
+            latestRSVPMessage = 
+`॥ Shree Ganeshaya Namah ॥
+*Wedding RSVP — Pooja & Ritvik*
+
+*Guest Name:* ${name}
+*Number of Guests:* ${count}
+*Family Side:* ${side}
+
+*Attending Functions:*
+${eventsText}
+${message ? `\n*Blessings / Note:* ${message}` : ""}
+
+With warm regards!`;
+
+            const whatsappNumber = "918077758603";
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(latestRSVPMessage)}`;
+
+            document.getElementById("rsvp-preview-text").textContent = latestRSVPMessage;
+            document.getElementById("whatsapp-direct-link").href = whatsappURL;
+
+            const modal = document.getElementById("rsvp-modal");
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+
+            // Attempt opening WhatsApp in new tab automatically
+            window.open(whatsappURL, "_blank", "noopener,noreferrer");
+        }
+
+        function closeRSVPModal() {
+            const modal = document.getElementById("rsvp-modal");
+            modal.classList.add("hidden");
+            modal.classList.remove("flex");
+        }
+
+        function copyRSVPText() {
+            const tempInput = document.createElement("textarea");
+            tempInput.value = latestRSVPMessage;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            const btn = document.getElementById("copy-rsvp-btn");
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = "<span>✅</span><span>Copied!</span>";
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+            }, 2200);
+        }
+
+        // 4. FALLING MARIGOLD PETALS GENERATOR
+        function createMarigoldPetals() {
+            const container = document.getElementById("petals-container");
+            const colors = ["#E89B25", "#F2B84B", "#D97706", "#C84B59"];
+            const petalCount = 14;
+
+            for (let i = 0; i < petalCount; i++) {
+                const petal = document.createElement("div");
+                petal.className = "petal";
+                const size = Math.random() * 10 + 10;
+                const left = Math.random() * 100;
+                const duration = Math.random() * 9 + 11;
+                const delay = Math.random() * 12;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+
+                petal.style.left = `${left}vw`;
+                petal.style.animationDuration = `${duration}s`;
+                petal.style.animationDelay = `${delay}s`;
+                petal.innerHTML = `
+                    <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="${color}">
+                        <path d="M12 2C15 7 19 11 12 22C5 11 9 7 12 2Z" opacity="0.85"/>
+                    </svg>
+                `;
+                container.appendChild(petal);
+            }
+        }
+
+        // 5. SCROLL REVEAL OBSERVER
+        function initScrollReveal() {
+            const reveals = document.querySelectorAll(".reveal");
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");
+                    }
+                });
+            }, { threshold: 0.12 });
+
+            reveals.forEach(el => observer.observe(el));
+        }
+
+        // 6. YOUTUBE IFRAME API BACKGROUND WEDDING SONG ("Aaj Se Teri" - rBiblCpTw7s) + CHIME FALLBACK
+        const YT_VIDEO_ID = "rBiblCpTw7s";
+        let ytPlayer = null;
+        let ytReady = false;
+        let ytFailed = false;
+        let pendingAutoPlay = false;
+
+        let audioCtx = null;
+        let isPlayingAudio = false;
+        let chimeInterval = null;
+
+        // Load Official YouTube IFrame API asynchronously
+        (function loadYouTubeAPI() {
+            const tag = document.createElement("script");
+            tag.src = "https://www.youtube.com/iframe_api";
+            tag.onerror = function () {
+                ytFailed = true;
+            };
+            const firstScriptTag = document.getElementsByTagName("script")[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        })();
+
+        // Global callback invoked by YouTube IFrame API
+        window.onYouTubeIframeAPIReady = function () {
+            try {
+                ytPlayer = new YT.Player("yt-music-player", {
+                    height: "1",
+                    width: "1",
+                    videoId: YT_VIDEO_ID,
+                    playerVars: {
+                        autoplay: 0,
+                        controls: 0,
+                        disablekb: 1,
+                        fs: 0,
+                        iv_load_policy: 3,
+                        loop: 1,
+                        modestbranding: 1,
+                        playlist: YT_VIDEO_ID,
+                        playsinline: 1,
+                        rel: 0
+                    },
+                    events: {
+                        onReady: function (event) {
+                            ytReady = true;
+                            event.target.setVolume(80);
+                            if (pendingAutoPlay) {
+                                pendingAutoPlay = false;
+                                startYouTubeSong();
+                            }
+                        },
+                        onStateChange: function (event) {
+                            if (event.data === YT.PlayerState.PLAYING) {
+                                isPlayingAudio = true;
+                                updateMusicUI(true, "♪ Aaj Se Teri");
+                            } else if (event.data === YT.PlayerState.PAUSED) {
+                                isPlayingAudio = false;
+                                updateMusicUI(false, "♪ Aaj Se Teri");
+                            } else if (event.data === YT.PlayerState.ENDED) {
+                                // Ensure seamless loop
+                                event.target.playVideo();
+                            }
+                        },
+                        onError: function () {
+                            ytFailed = true;
+                            if (pendingAutoPlay || isPlayingAudio) {
+                                startFallbackChime();
+                            }
+                        }
+                    }
+                });
+            } catch (err) {
+                ytFailed = true;
+            }
+        };
+
+        function updateMusicUI(playing, labelText) {
+            const eq = document.getElementById("eq-visualizer");
+            const label = document.getElementById("audio-label");
+            const badge = document.getElementById("audio-state-badge");
+            if (!eq || !label || !badge) return;
+
+            if (labelText) label.textContent = labelText;
+
+            if (playing) {
+                eq.classList.add("eq-playing");
+                badge.textContent = "Pause";
+                badge.classList.remove("bg-gold/20");
+                badge.classList.add("bg-crimson-royal", "text-ivory");
+            } else {
+                eq.classList.remove("eq-playing");
+                badge.textContent = "Play";
+                badge.classList.add("bg-gold/20");
+                badge.classList.remove("bg-crimson-royal", "text-ivory");
+            }
+        }
+
+        function startYouTubeSong() {
+            if (ytFailed) {
+                startFallbackChime();
+                return;
+            }
+            if (ytReady && ytPlayer && typeof ytPlayer.playVideo === "function") {
+                try {
+                    ytPlayer.unMute();
+                    ytPlayer.setVolume(80);
+                    ytPlayer.playVideo();
+                    isPlayingAudio = true;
+                    updateMusicUI(true, "♪ Aaj Se Teri");
+                } catch (err) {
+                    startFallbackChime();
+                }
+            } else {
+                // Queue playback for the instant YouTube player finishes initializing
+                pendingAutoPlay = true;
+                updateMusicUI(true, "♪ Aaj Se Teri");
+            }
+        }
+
+        function pauseYouTubeSong() {
+            pendingAutoPlay = false;
+            if (ytReady && ytPlayer && typeof ytPlayer.pauseVideo === "function") {
+                try {
+                    ytPlayer.pauseVideo();
+                } catch (err) {}
+            }
+            if (chimeInterval) {
+                clearInterval(chimeInterval);
+                chimeInterval = null;
+            }
+            isPlayingAudio = false;
+            updateMusicUI(false, ytFailed ? "Auspicious Chime" : "♪ Aaj Se Teri");
+        }
+
+        function playSacredNote(freq, duration = 3.2, volume = 0.04) {
+            if (!audioCtx) return;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = "sine";
+            osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+            gain.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(volume, audioCtx.currentTime + 0.4);
+            gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + duration);
+        }
+
+        function startFallbackChime() {
+            const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+            if (!audioCtx) audioCtx = new AudioContextClass();
+            if (audioCtx.state === "suspended") audioCtx.resume();
+
+            const notes = [261.63, 392.00, 329.63, 493.88, 523.25];
+            let step = 0;
+
+            playSacredNote(notes[0], 4, 0.045);
+            if (chimeInterval) clearInterval(chimeInterval);
+            chimeInterval = setInterval(() => {
+                step = (step + 1) % notes.length;
+                playSacredNote(notes[step], 3.8, 0.035);
+            }, 2200);
+
+            isPlayingAudio = true;
+            updateMusicUI(true, "Auspicious Chime");
+        }
+
+        function toggleAmbientMusic() {
+            if (!isPlayingAudio) {
+                startYouTubeSong();
+            } else {
+                pauseYouTubeSong();
+            }
+        }
+
+        window.onload = function () {
+            createMarigoldPetals();
+            initScrollReveal();
+            initCoverGestures();
+        };
+
+        // 7. ANIMATED ROYAL FRONT COVER GATE OPEN & REPLAY CONTROLS
+        let isCoverOpen = false;
+
+        function openRoyalInvitation(enableSound = true) {
+            if (isCoverOpen) return;
+            isCoverOpen = true;
+
+            const cover = document.getElementById("royal-cover-overlay");
+            if (!cover) return;
+
+            // Start "Aaj Se Teri" seamlessly upon user click/gesture on the front cover
+            if (enableSound && !isPlayingAudio) {
+                startYouTubeSong();
+            }
+
+            cover.classList.add("is-opening");
+            document.body.style.overflowY = "auto";
+
+            setTimeout(() => {
+                cover.style.opacity = "0";
+                cover.style.visibility = "hidden";
+                cover.style.pointerEvents = "none";
+            }, 900);
+        }
+
+        function replayFrontCover() {
+            const cover = document.getElementById("royal-cover-overlay");
+            if (!cover) return;
+            isCoverOpen = false;
+            cover.style.visibility = "visible";
+            cover.style.pointerEvents = "auto";
+            cover.style.opacity = "1";
+            cover.classList.remove("is-opening");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        function initCoverGestures() {
+            const cover = document.getElementById("royal-cover-overlay");
+            if (!cover) return;
+
+            let touchStartY = 0;
+
+            cover.addEventListener("wheel", (e) => {
+                if (!isCoverOpen && e.deltaY > 15) {
+                    openRoyalInvitation(true);
+                }
+            }, { passive: true });
+
+            cover.addEventListener("touchstart", (e) => {
+                touchStartY = e.touches[0].clientY;
+            }, { passive: true });
+
+            cover.addEventListener("touchmove", (e) => {
+                const deltaY = touchStartY - e.touches[0].clientY;
+                if (!isCoverOpen && deltaY > 35) {
+                    openRoyalInvitation(true);
+                }
+            }, { passive: true });
+        }
+    </script>
+</body>
+</html>
