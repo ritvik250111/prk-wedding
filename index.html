@@ -456,10 +456,7 @@
                         stroke="url(#sindoorCrimson)" stroke-width="2.2" fill="none" class="monogram-stroke">P</text>
                     <text x="148" y="222" text-anchor="middle" font-family="'Cinzel Decorative', serif" font-weight="700" font-size="84"
                         fill="url(#sindoorCrimson)" class="monogram-fill-fade">P</text>
-                    <text x="254" y="222" text-anchor="middle" font-family="'Cinzel Decorative', serif" font-weight="700" font-size="84"
-                        stroke="url(#sindoorCrimson)" stroke-width="2.2" fill="none" class="monogram-stroke-delay">R</text>
-                    <text x="254" y="222" text-anchor="middle" font-family="'Cinzel Decorative', serif" font-weight="700" font-size="84"
-                        fill="url(#sindoorCrimson)" class="monogram-fill-fade">R</text>
+                    
 
                     <!-- Layer 7: Sacred Lotus Pedestal & Auspicious Swastika Seal at Bottom of Medallion -->
                     <g transform="translate(200, 294)">
@@ -1296,7 +1293,7 @@
             </button>
 
             <div class="wax-seal w-16 h-16 rounded-full mx-auto flex items-center justify-center border border-gold-light text-gold-light font-cinzel font-bold text-lg mb-4">
-                P&amp;R
+                R&amp;P
             </div>
 
             <h3 class="font-cinzel text-2xl sm:text-3xl font-bold text-crimson-royal">
@@ -1329,11 +1326,11 @@
         <div class="max-w-4xl mx-auto relative z-10">
             <!-- Wax Seal Monogram -->
             <div class="wax-seal w-20 h-20 rounded-full mx-auto flex items-center justify-center border-2 border-gold-light text-gold-light font-cinzel font-bold text-xl shadow-gold-glow mb-5">
-                P&amp;R
+                R&amp;P
             </div>
 
             <h2 class="font-cinzel text-2xl sm:text-4xl font-bold text-gold-light tracking-wider">
-                Pooja &amp; Ritvik
+                Ritvik &amp; Pooja
             </h2>
             <p class="font-devanagari text-gold-light/90 text-base sm:text-lg mt-2">
                 ॥ शुभ विवाह ॥
@@ -1382,18 +1379,18 @@
                 description: "Sacred Haldi Ceremony for Pooja & Ritvik. With love, the Kothari and Kaushik families."
             },
             {
-                title: "Pooja & Ritvik — Shubh Vivah (Wedding)",
+                title: "Ritvik & Pooja — Shubh Vivah (Wedding)",
                 start: "20261212T200000",
                 end: "20261213T010000",
                 location: "Grand Luxury Banquets & Resort, Faridabad",
-                description: "Royal Wedding Ceremony (Shubh Vivah) of Pooja & Ritvik. With love, the Kothari and Kaushik families."
+                description: "Royal Wedding Ceremony (Shubh Vivah) of Ritvik & Pooja. With love, the Kothari and Kaushik families."
             },
             {
-                title: "Pooja & Ritvik — Grand Reception (Pritibhoj)",
+                title: "Ritvik & Pooja — Grand Reception (Pritibhoj)",
                 start: "20261214T193000",
                 end: "20261214T233000",
                 location: "Abhinandan Wedding Hall, Ranjhawala, Dehradun",
-                description: "Grand Wedding Reception (Pritibhoj) for Pooja & Ritvik at Abhinandan Wedding Hall, Ranjhawala, Dehradun. Google Maps: https://share.google/rkbc6GpRXT1rfw3hN"
+                description: "Grand Wedding Reception (Pritibhoj) for Ritvik & Pooja at Abhinandan Wedding Hall, Ranjhawala, Dehradun. Google Maps: https://share.google/rkbc6GpRXT1rfw3hN"
             }
         ];
 
@@ -1401,7 +1398,7 @@
             let ics = [
                 "BEGIN:VCALENDAR",
                 "VERSION:2.0",
-                "PRODID:-//Pooja and Ritvik Royal Wedding//IN",
+                "PRODID:-//Ritvik and Pooja Royal Wedding//IN",
                 "CALSCALE:GREGORIAN",
                 "METHOD:PUBLISH"
             ];
@@ -1409,7 +1406,7 @@
             eventsList.forEach((ev, idx) => {
                 ics.push(
                     "BEGIN:VEVENT",
-                    `UID:pooja-ritvik-2026-${idx}-${Date.now()}@weddinginvite.in`,
+                    `UID:ritvik-pooja-2026-${idx}-${Date.now()}@weddinginvite.in`,
                     `DTSTAMP:20261117T000000Z`,
                     `DTSTART;TZID=Asia/Kolkata:${ev.start}`,
                     `DTEND;TZID=Asia/Kolkata:${ev.end}`,
