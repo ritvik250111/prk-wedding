@@ -57,6 +57,38 @@
     </script>
 
     <style>
+        /* Floating Auto-Scroll Toggle Button */
+.auto-scroll-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #7a1c1c, #521010);
+  color: #f8e5b5;
+  border: 1.5px solid #d4af37;
+  padding: 10px 18px;
+  border-radius: 50px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.auto-scroll-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35);
+}
+
+.auto-scroll-btn.scrolling {
+  background: linear-gradient(135deg, #b8860b, #8b6508);
+  color: #fffdf7;
+}
         /* Textured Parchment Paper Pattern */
         body {
             background-color: #FAF6EE;
@@ -510,7 +542,11 @@
     <div class="fixed -left-[9999px] -top-[9999px] w-1 h-1 opacity-0 pointer-events-none overflow-hidden" aria-hidden="true">
         <div id="yt-music-player"></div>
     </div>
-
+<!-- Floating Auto-Scroll Tour Button -->
+    <button id="autoScrollBtn" class="auto-scroll-btn" aria-label="Toggle Auto Scroll">
+        <span id="autoScrollIcon">▶</span>
+        <span id="autoScrollText">Auto Tour</span>
+    </button>
     <!-- Floating Wedding Music Pill ("Aaj Se Teri"), Replay Crest & Quick RSVP -->
     <div class="fixed bottom-5 right-5 z-40 flex flex-col gap-2.5 items-end">
         <button onclick="replayFrontCover()" title="View Animated R&P Cover"
@@ -1833,6 +1869,90 @@ With warm regards!`;
                 }
             }, { passive: true });
         }
+     // 8. SMOOTH AUTO-SCROLL TOUR (COMPATIBLE WITH TAILWIND scroll-smooth)
+        (function () {
+            const btn = document.getElementById("autoScrollBtn");
+            const icon = document.getElementById("autoScrollIcon");
+            const text = document.getElementById("autoScrollText");
+            const htmlEl = document.documentElement;
+
+            if (!btn) return;
+
+            let isAutoScrolling = false;
+            let animationFrameId = null;
+            const scrollSpeed = 1.1; // Pixels per frame (increase to 1.6 for faster, 0.7 for slower)
+
+            function updateButtonUI(active) {
+                if (active) {
+                    btn.classList.add("scrolling");
+                    icon.textContent = "⏸";
+                    text.textContent = "Pause Tour";
+                } else {
+                    btn.classList.remove("scrolling");
+                    icon.textContent = "▶";
+                    text.textContent = "Auto Tour";
+                }
+            }
+
+            function stepScroll() {
+                if (!isAutoScrolling) return;
+
+                const atBottom =
+                    window.innerHeight + window.scrollY >= htmlEl.scrollHeight - 2;
+
+                if (atBottom) {
+                    stopAutoScroll();
+                    return;
+                }
+
+                window.scrollBy({ top: scrollSpeed, left: 0, behavior: "instant" });
+                animationFrameId = requestAnimationFrame(stepScroll);
+            }
+
+            window.startAutoScroll = function () {
+                if (isAutoScrolling) return;
+                isAutoScrolling = true;
+                htmlEl.classList.remove("scroll-smooth");
+                updateButtonUI(true);
+                animationFrameId = requestAnimationFrame(stepScroll);
+            };
+
+            window.stopAutoScroll = function () {
+                isAutoScrolling = false;
+                htmlEl.classList.add("scroll-smooth");
+                updateButtonUI(false);
+                if (animationFrameId) {
+                    cancelAnimationFrame(animationFrameId);
+                    animationFrameId = null;
+                }
+            };
+
+            btn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                if (isAutoScrolling) {
+                    window.stopAutoScroll();
+                } else {
+                    window.startAutoScroll();
+                }
+            });
+
+            // Pause immediately if guest manually scrolls, touches screen, or types
+            ["wheel", "touchstart", "keydown"].forEach((eventType) => {
+                window.addEventListener(eventType, () => {
+                    if (isAutoScrolling) window.stopAutoScroll();
+                }, { passive: true });
+            });
+
+            // Automatically start the guided tour 1.4s after clicking "Open Invitation"
+            const openBtn = document.getElementById("open-invitation-btn");
+            if (openBtn) {
+                openBtn.addEventListener("click", () => {
+                    setTimeout(() => {
+                        window.startAutoScroll();
+                    }, 1400);
+                });
+            }
+        })();
     </script>
 </body>
 </html>
